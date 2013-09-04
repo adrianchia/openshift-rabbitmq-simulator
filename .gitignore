@@ -1,0 +1,5 @@
+web-export
+node_modules
+manifest.yml
+*.swp
+.idea
