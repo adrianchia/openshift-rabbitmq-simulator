@@ -11,8 +11,8 @@ var app = express();
 var expImpEnabled = typeof(process.env.VCAP_APP_HOST) !== 'undefined';
 
 app.configure(function() {
-  app.set('host',process.env.OPENSHIFT_INTERNAL_IP || "127.0.0.1");
-  app.set('port', process.env.OPENSHIFT_INTERNAL_IP  || 3000);
+  app.set('host',process.env.OPENSHIFT_NODEJS_IP || process.env.OPENSHIFT_INTERNAL_IP || "127.0.0.1");
+  app.set('port', process.env.OPENSHIFT_NODEJS_PORT ||  process.env.OPENSHIFT_INTERNAL_PORT || 8080);
   app.use(express.static(__dirname + '/web'));
   app.use(express.bodyParser());
   app.use(require('express-blocks'));
